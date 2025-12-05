@@ -30,7 +30,7 @@ on:
 
 jobs:
   deploy:
-    uses: kubeletto/actions/.github/workflows/reusable-deploy.yml@v1
+    uses: Pod-Pilot/kubeletto-actions/.github/workflows/reusable-deploy.yml@v1
     with:
       project_id: ${{ vars.KUBELETTO_PROJECT_ID }}
     secrets:
@@ -39,6 +39,6 @@ jobs:
 
 ## Publishing
 
-1. Create a public repository named `actions` under the `kubeletto` organization (or your user account).
+1. Create a public repository named `kubeletto-actions` under the `Pod-Pilot` organization.
 2. Push this code to the repository.
 3. Create a release tagged `v1` so that users can pin to a stable version.
