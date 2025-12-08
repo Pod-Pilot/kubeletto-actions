@@ -96,7 +96,6 @@ jobs:
           curl -X POST "${KUBELETTO_API_URL}/v1/builds/complete" \
             -H "Authorization: Bearer ${{ secrets.api_key }}" \
             -H "Content-Type: application/json" \
-
             -d @- <<EOF
           {
             "project_id": "${KUBELETTO_PROJECT_ID}",
@@ -107,7 +106,6 @@ jobs:
             "success": true
           }
           EOF
-
 
       - name: Handle build failure
         if: failure()
