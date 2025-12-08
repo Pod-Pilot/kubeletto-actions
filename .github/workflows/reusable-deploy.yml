@@ -95,8 +95,8 @@ jobs:
 
           curl -X POST "${KUBELETTO_API_URL}/v1/builds/complete" \
             -H "Authorization: Bearer ${{ secrets.api_key }}" \
-            -H "X-Registry-Token: ${{ secrets.GITHUB_TOKEN }}" \
             -H "Content-Type: application/json" \
+
             -d @- <<EOF
           {
             "project_id": "${KUBELETTO_PROJECT_ID}",
