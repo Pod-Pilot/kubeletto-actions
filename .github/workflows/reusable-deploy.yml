@@ -39,6 +39,10 @@ jobs:
       packages: write
 
     steps:
+      - name: Record build start time
+        id: timing
+        run: echo "started_at=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> $GITHUB_OUTPUT
+
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -103,7 +107,8 @@ jobs:
             "image_tag": "${IMAGE_TAG}",
             "git_ref": "${{ github.ref_name }}",
             "build_url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
-            "success": true
+            "success": true,
+            "started_at": "${{ steps.timing.outputs.started_at }}"
           }
           EOF
 
@@ -125,6 +130,7 @@ jobs:
             "git_ref": "${{ github.ref_name }}",
             "build_url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
             "success": false,
-            "error": "Build failed - check GitHub Actions logs"
+            "error": "Build failed - check GitHub Actions logs",
+            "started_at": "${{ steps.timing.outputs.started_at }}"
           }
           EOF
